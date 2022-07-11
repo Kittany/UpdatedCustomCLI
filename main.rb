@@ -38,14 +38,16 @@ class App
             
             # 2)
             when "mkfile"
-            CLIController.mkfile(name, @path)
+            CLIController.create(name, @path, false)
             
             # 3)
             when "mkdir"
-            CLIController.mkdir(name, @path)
+            CLIController.create(name, @path, true)
+
             # 4)
             when "cd"
             @path = CLIController.cd(name, @path)
+            
             # 5)
             when "cd.."
             @path = CLIController.cdOut(@path)

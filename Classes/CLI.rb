@@ -9,21 +9,12 @@ module CLIModule
     class CLIController      
         @@FileDetails = []
 
-        def self.mkfile(fileName, path)
-            if inputCharactersValidation(fileName) ||isNameExist(fileName, @@FileDetails, path)
+        def self.create(fileName, path, isDir)
+            if inputCharactersValidation(fileName) || isNameExist(fileName, @@FileDetails, path)
                 return
             end
 
-            @@FileDetails.push(FileDetails.new(fileName, path, false))
-        end
-
-
-        def self.mkdir(dirName, path)
-            if inputCharactersValidation(dirName) || isNameExist(dirName, @@FileDetails, path)
-                return
-            end
-
-            @@FileDetails.push(FileDetails.new(dirName, path ,true))
+            @@FileDetails.push(FileDetails.new(fileName, path, isDir))
         end
 
 

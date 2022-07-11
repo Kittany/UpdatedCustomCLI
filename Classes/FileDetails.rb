@@ -6,12 +6,6 @@ module FileDetailsModule
             @isDir = isDir
         end
 
-        def getFileDetails
-            puts @fileName
-            puts @filePath
-            puts @isDir
-        end
-
         def getFileName
             return @fileName
         end
@@ -23,6 +17,5 @@ module FileDetailsModule
         def getFilePath
             return @filePath
         end
-
     end
 end
