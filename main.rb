@@ -1,0 +1,59 @@
+require_relative 'Classes/CLI'
+include CLIModule
+
+
+class App
+    def initialize
+        @path = ""
+    end
+
+
+    def getInput
+        print @path + ">"
+
+        # Getting the input from the user
+        input = gets.chomp.split(" ")
+        command = input[0]
+
+        # Exit 
+        # if command == "exit" && input.size == 1
+        if command == "exit"
+            puts "Have a nice day :)!"
+            return
+        end
+
+        #Input Validation
+        if input.size > 2
+            puts "Invalid command, please try again!\n"
+            getInput
+            return
+        end
+        
+        name = input[1]
+        
+        case command 
+            # 1)
+            when "ls"
+            CLIController.ls(@path)
+            
+            # 2)
+            when "mkfile"
+            CLIController.mkfile(name, @path)
+            
+            # 3)
+            when "mkdir"
+            CLIController.mkdir(name, @path)
+            # 4)
+            when "cd"
+            @path = CLIController.cd(name, @path)
+            # 5)
+            when "cd.."
+            @path = CLIController.cdOut(@path)
+        end
+        getInput
+    end
+end
+
+
+app = App.new
+app.getInput
