@@ -18,10 +18,11 @@ Custom CLI written in ruby. This app allow you to create directories & files in 
 
 ### Notes
 ls => will show files in the current path.
+
 ls (dirname) => will show the files of the dir inside the current path.
 
 ## How to run the app
 1. Download ruby from https://rubyinstaller.org/downloads/
 2. Download this project
 3. Open your IDE or Terminal and type (ruby main.rb)
-4. Hope you Enjoy :D
+4. Enjoy the app :D
