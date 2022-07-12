@@ -38,18 +38,22 @@ class App
             CLIController.ls(@path)
             
             # 2)
+            when "lsph"
+            CLIController.lsph
+
+            # 3)
             when "mkfile"
             CLIController.create(fileName, @path, false)
             
-            # 3)
+            # 4)
             when "mkdir"
             CLIController.create(fileName, @path, true)
 
-            # 4)
+            # 5)
             when "cd"
             @path = CLIController.cd(fileName, @path)
             
-            # 5)
+            # 6)
             when "cd.."
             @path = CLIController.cdOut(@path)
         end

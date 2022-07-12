@@ -29,6 +29,9 @@ module CLIModule
             listFiles(@@filesDB[path])
         end
         
+        def self.lsph()
+            listPathHierarchy(@@filesDB)
+        end
 
         def self.cd(dir, path)
             return goIn(dir, path, @@filesDB[path])

@@ -9,6 +9,19 @@ module FileDetailsServiceModule
         end
     end
 
+    # This function gives us how the files is being sorted in the app
+    def listPathHierarchy(filesArr)
+        filesArr.each do |path, files|
+            print path == "" ? "\nPath[Root]: Files[" : "\nPath[#{path}]: Files["
+            for f in files
+                print "\t#{f.getFileName}"
+            end
+            puts "]\n"
+        end
+        puts "\n"
+    end 
+
+
     def goBack(path)
         # Check if were in the root path
         if path == ""
