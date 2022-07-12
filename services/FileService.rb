@@ -1,7 +1,7 @@
 require_relative '../utils/Validation'
 include ValidationModule
 
-module FileDetailsServiceModule
+module FileServiceModule
 
     def listFiles(filesArr, path, dirName)
         # Checks if the user gives us dir name

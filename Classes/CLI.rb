@@ -2,8 +2,8 @@ require_relative 'CustomFile'
 include CustomFileModule
 require_relative '../utils/Validation'
 include ValidationModule
-require_relative '../services/FileDetailsService'
-include FileDetailsServiceModule
+require_relative '../services/FileService'
+include FileServiceModule
 
 
 module CLIModule
