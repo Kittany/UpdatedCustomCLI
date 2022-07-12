@@ -1,30 +1,37 @@
-require_relative 'FileDetails'
-include FileDetailsModule
-require_relative '../services/FileDetailsService'
-include FileDetailsServiceModule
+require_relative 'CustomFile'
+include CustomFileModule
 require_relative '../utils/Validation'
 include ValidationModule
+require_relative '../services/FileDetailsService'
+include FileDetailsServiceModule
+
 
 module CLIModule
-    class CLIController      
-        @@FileDetails = []
+    class CLIController 
+        # Creating a new hash this way allows us to create a new hash (key) without the need of checking 
+        # the key everytime we create a new hash, e.g (@@filesDB["pathTest"] ||= []), this approach is more elegant and it help us to
+        # prevent the app from crashing when we use the (ls) command right when we start the app.
+        @@filesDB = Hash.new {|h,k| h[k]=[]}
+
 
         def self.create(fileName, path, isDir)
-            if inputCharactersValidation(fileName) || isNameExist(fileName, @@FileDetails, path)
+            # Some Validations
+            if inputCharactersValidation(fileName) || isNameExist(fileName, path, @@filesDB[path])
                 return
             end
-
-            @@FileDetails.push(FileDetails.new(fileName, path, isDir))
+            
+            # Inserting new file to the specified path
+            @@filesDB[path] << CustomFile.new(fileName, isDir)
         end
 
 
         def self.ls(path)
-            listFiles(@@FileDetails, path)
+            listFiles(@@filesDB[path])
         end
         
 
         def self.cd(dir, path)
-            return goIn(dir, path, @@FileDetails)
+            return goIn(dir, path, @@filesDB[path])
         end
 
 

@@ -1,8 +1,7 @@
-module FileDetailsModule
-    class FileDetails
-        def initialize(fileName, filePath,isDir)
+module CustomFileModule
+    class CustomFile
+        def initialize(fileName, isDir)
             @fileName = fileName
-            @filePath = filePath
             @isDir = isDir
         end
 
@@ -12,10 +11,6 @@ module FileDetailsModule
 
         def getIsDir
             return @isDir
-        end
-
-        def getFilePath
-            return @filePath
         end
     end
 end

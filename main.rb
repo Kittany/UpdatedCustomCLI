@@ -29,7 +29,8 @@ class App
             return
         end
         
-        name = input[1]
+        # fileName works for both (dir, file)
+        fileName = input[1]
         
         case command 
             # 1)
@@ -38,15 +39,15 @@ class App
             
             # 2)
             when "mkfile"
-            CLIController.create(name, @path, false)
+            CLIController.create(fileName, @path, false)
             
             # 3)
             when "mkdir"
-            CLIController.create(name, @path, true)
+            CLIController.create(fileName, @path, true)
 
             # 4)
             when "cd"
-            @path = CLIController.cd(name, @path)
+            @path = CLIController.cd(fileName, @path)
             
             # 5)
             when "cd.."
