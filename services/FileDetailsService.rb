@@ -3,10 +3,36 @@ include ValidationModule
 
 module FileDetailsServiceModule
 
-    def listFiles(files)
-        for f in files
-            puts f.getFileName
+    def listFiles(filesArr, path, dirName)
+        # Checks if the user gives us dir name
+        if dirName == nil
+            # Show files in the current path
+            for f in filesArr[path]
+                puts f.getFileName
+            end
+            return
         end
+
+
+        isDirNameExist = false
+
+        for f in filesArr[path]
+            # Check if the given dirName exist in the current folder & check if its a dir type
+            if f.getFileName == dirName && f.getIsDir
+                isDirNameExist = true
+            end
+        end
+
+        if isDirNameExist
+            # If: Path = "" which is (ROOT path) return the files of ROOT
+            # Else: return files of the given dirName inside the current path
+            files = path == "" ? filesArr[dirName] : filesArr[path + "/" +dirName]
+            for f in files
+                puts f.getFileName
+            end
+            return
+        end
+        puts "ls: cannot access '#{dirName}': No such file or directory"
     end
 
     # This function gives us how the files is being sorted in the app
@@ -14,7 +40,7 @@ module FileDetailsServiceModule
         filesArr.each do |path, files|
             print path == "" ? "\nPath[Root]: Files[" : "\nPath[#{path}]: Files["
             for f in files
-                print "\t#{f.getFileName}"
+                print "\t#{f.getFileName}\t"
             end
             puts "]\n"
         end

@@ -25,8 +25,8 @@ module CLIModule
         end
 
 
-        def self.ls(path)
-            listFiles(@@filesDB[path])
+        def self.ls(path, dirName)
+            listFiles(@@filesDB, path, dirName)
         end
         
         def self.lsph()

@@ -35,7 +35,7 @@ class App
         case command 
             # 1)
             when "ls"
-            CLIController.ls(@path)
+            CLIController.ls(@path, fileName)
             
             # 2)
             when "lsph"
